@@ -20,7 +20,7 @@ permalink:           none
 plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
 
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
-title:		           'sjahn'
+title:		           '주피라이터'
 description:	       '기록되지 않는 것은 기억되지 않는다.'
 author:              'sjahn'
 
