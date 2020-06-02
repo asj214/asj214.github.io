@@ -55,7 +55,7 @@ a {
 }
 
 a:hover {
-  color: black;
+  color: #00d698;
   border-bottom: none;
 }
 
@@ -107,7 +107,7 @@ hr {
 }
 
 .masthead a:hover {
-  color:black;
+  color:#00d698;
 }
 
 .masthead-title a {
