@@ -3,7 +3,7 @@ layout: post
 title: "고추먹고 맴맴..."
 author: "sjahn"
 categories: posts
-tags: [documentation,sample]
+tags: [sample]
 image: cutting.jpg
 ---
 

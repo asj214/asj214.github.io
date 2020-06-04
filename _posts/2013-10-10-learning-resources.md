@@ -3,7 +3,7 @@ layout: post
 title: "Learning Resources"
 author: "Paul Le"
 categories: journal
-tags: [documentation,sample]
+tags: [sample]
 image: spools.jpg
 ---
 
