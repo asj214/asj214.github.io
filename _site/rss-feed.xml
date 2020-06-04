@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title>주피라이터</title>
+		<description>기록되지 않는 것은 기억되지 않는다.</description>
+		<link>https://asj214.github.io</link>
+		<atom:link href="https://asj214.github.io/rss-feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>laravel 프로젝트</title>
+				
+					<dc:creator>sjahn</dc:creator>
+				
+				
+					<description>&lt;h3 id=&quot;다양한-테스트-case&quot;&gt;다양한 테스트 CASE&lt;/h3&gt;
+
+</description>
+				
+				<pubDate>Tue, 02 Jun 2020 00:00:00 +0900</pubDate>
+				<link>http://localhost:4000/php/example.html</link>
+				<guid isPermaLink="true">http://localhost:4000/php/example.html</guid>
+			</item>
+		
+			<item>
+				<title>Welcome to Lagrange!</title>
+				
+					<dc:creator>Paul Le</dc:creator>
+				
+				
+					<description>&lt;p&gt;Lagrange is a minimalist Jekyll theme. The purpose of this theme is to provide a simple, clean, content-focused blogging platform for your personal site or blog. Below you can find everything you need to get started.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Fri, 01 Jan 2016 00:00:00 +0900</pubDate>
+				<link>http://localhost:4000/journal/welcome-to-lagrange.html</link>
+				<guid isPermaLink="true">http://localhost:4000/journal/welcome-to-lagrange.html</guid>
+			</item>
+		
+			<item>
+				<title>Getting Started</title>
+				
+					<dc:creator>Paul Le</dc:creator>
+				
+				
+					<description>&lt;h1 id=&quot;lagrange&quot;&gt;Lagrange&lt;/h1&gt;
+
+</description>
+				
+				<pubDate>Sat, 10 Oct 2015 00:00:00 +0900</pubDate>
+				<link>http://localhost:4000/journal/getting-started.html</link>
+				<guid isPermaLink="true">http://localhost:4000/journal/getting-started.html</guid>
+			</item>
+		
+			<item>
+				<title>Text Formatting Examples</title>
+				
+					<dc:creator>Paul Le</dc:creator>
+				
+				
+					<description>&lt;h1 id=&quot;markdown-support&quot;&gt;Markdown Support&lt;/h1&gt;
+
+</description>
+				
+				<pubDate>Wed, 01 Jan 2014 00:00:00 +0900</pubDate>
+				<link>http://localhost:4000/journal/text-formatting-examples.html</link>
+				<guid isPermaLink="true">http://localhost:4000/journal/text-formatting-examples.html</guid>
+			</item>
+		
+			<item>
+				<title>Learning Resources</title>
+				
+					<dc:creator>Paul Le</dc:creator>
+				
+				
+					<description>&lt;p&gt;The beauty of computer programming is that you do not need to formally go to school to learn how to program. You can learn almost everything that you would need to know online, and for free. The following resources are some that I have used personally, that I highly recommend, for anyone looking to learn more about computer programming.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Thu, 10 Oct 2013 00:00:00 +0900</pubDate>
+				<link>http://localhost:4000/journal/learning-resources.html</link>
+				<guid isPermaLink="true">http://localhost:4000/journal/learning-resources.html</guid>
+			</item>
+		
+			<item>
+				<title>고추먹고 맴맴...</title>
+				
+					<dc:creator>sjahn</dc:creator>
+				
+				
+					<description>&lt;h3 id=&quot;아무-텍스트&quot;&gt;아무 텍스트&lt;/h3&gt;
+&lt;p&gt;중국은 ‘한류’라는 단어를 탄생시킨 한류 열풍의 진원지입니다. 최근 중국에서 한층 강화된 해외 콘텐츠 규제로 인해 한류 열풍이 다소 주춤하는 듯 보였는데요. 하지만 중국 현지 팬들 사이에서 한국 드라마나 예능, 연예계 이슈는 여전히 관심의 대상입니다.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Thu, 04 Apr 2013 00:00:00 +0900</pubDate>
+				<link>http://localhost:4000/posts/about-the-author.html</link>
+				<guid isPermaLink="true">http://localhost:4000/posts/about-the-author.html</guid>
+			</item>
+		
+	</channel>
+</rss>

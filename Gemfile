@@ -5,6 +5,7 @@ source "https://rubygems.org"
 # file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
 #
 #     bundle exec jekyll serve
+#     위 커맨드가 안되는 경우: https://undefine.me/posts/8
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
