@@ -17,7 +17,9 @@ image: iu_thumbnail.jpg
 
 sqlalchemy 혹은 django-orm 을 설치하는 경우에 필요한데  
 
-만약에 다른 방법을 이용하고자 한다면 pymysql 커넥터를 이용하는 방법도 있긴하다.
+만약에 다른 방법을 이용하고자 한다면   
+
+다른 모듈인 [pymysql](https://pypi.org/project/PyMySQL/) 커넥터를 이용하는 방법도 있긴하다.
 
 
 
