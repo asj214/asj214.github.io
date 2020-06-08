@@ -7,7 +7,7 @@
 		<atom:link href="https://asj214.github.io/rss-feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>pip mysql client 설치 시 에러</title>
+				<title>pip mysqlclient 설치 시 에러</title>
 				
 					<dc:creator>sjahn</dc:creator>
 				
