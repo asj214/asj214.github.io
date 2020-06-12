@@ -7,6 +7,40 @@
 		<atom:link href="https://asj214.github.io/rss-feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>라라벨(laravel) 7.x 시작하기 (2)</title>
+				
+					<dc:creator>sjahn</dc:creator>
+				
+				
+					<description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;라라벨laravel-7x-시작하기-2&quot;&gt;라라벨(laravel) 7.x 시작하기 (2)&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;a href=&quot;/php/php-laravel-started.html&quot;&gt;이전글&lt;/a&gt;에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Sun, 26 Jan 2020 00:00:00 +0900</pubDate>
+				<link>http://localhost:4000/php/php-laravel-stated_2.html</link>
+				<guid isPermaLink="true">http://localhost:4000/php/php-laravel-stated_2.html</guid>
+			</item>
+		
+			<item>
+				<title>라라벨(laravel) 7.x 시작하기 (1)</title>
+				
+					<dc:creator>sjahn</dc:creator>
+				
+				
+					<description>&lt;h3 id=&quot;라라벨laravel-7x-시작하기-1&quot;&gt;라라벨(laravel) 7.x 시작하기 (1)&lt;/h3&gt;
+&lt;p&gt;일전에 5.8 버전으로 작업을 해본 경험이 있었는데, 어느새 6.x를 지나고 7.x까지 온 듯하다.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Thu, 23 Jan 2020 00:00:00 +0900</pubDate>
+				<link>http://localhost:4000/php/php-laravel-started.html</link>
+				<guid isPermaLink="true">http://localhost:4000/php/php-laravel-started.html</guid>
+			</item>
+		
+			<item>
 				<title>pip mysqlclient 설치 시 에러</title>
 				
 					<dc:creator>sjahn</dc:creator>

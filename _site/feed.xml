@@ -1,4 +1,195 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-07T13:42:33+09:00</updated><id>http://localhost:4000/</id><title type="html">주피라이터</title><subtitle>기록되지 않는 것은 기억되지 않는다.</subtitle><author><name>sjahn</name></author><entry><title type="html">pip mysql client 설치 시 에러</title><link href="http://localhost:4000/python/pip-mysql-client-error.html" rel="alternate" type="text/html" title="pip mysql client 설치 시 에러" /><published>2020-01-20T00:00:00+09:00</published><updated>2020-01-20T00:00:00+09:00</updated><id>http://localhost:4000/python/pip-mysql-client-error</id><content type="html" xml:base="http://localhost:4000/python/pip-mysql-client-error.html">&lt;h3 id=&quot;pip-mysql-client-설치-시-에러가-발생할-때&quot;&gt;pip mysql-client 설치 시 에러가 발생할 때&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-12T13:40:04+09:00</updated><id>http://localhost:4000/</id><title type="html">주피라이터</title><subtitle>기록되지 않는 것은 기억되지 않는다.</subtitle><author><name>sjahn</name></author><entry><title type="html">라라벨(laravel) 7.x 시작하기 (2)</title><link href="http://localhost:4000/php/php-laravel-stated_2.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (2)" /><published>2020-01-26T00:00:00+09:00</published><updated>2020-01-26T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-stated_2</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-stated_2.html">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;라라벨laravel-7x-시작하기-2&quot;&gt;라라벨(laravel) 7.x 시작하기 (2)&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;a href=&quot;/php/php-laravel-started.html&quot;&gt;이전글&lt;/a&gt;에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,&lt;/p&gt;
+
+&lt;p&gt;해당 페이지에서는 composer를 이용한 라라벨 설치 및 기본 설정을 기록한다.&lt;/p&gt;
+
+&lt;h4 id=&quot;라라벨laravel-설치&quot;&gt;라라벨(laravel) 설치&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;vagrant 실행: &lt;code class=&quot;highlighter-rouge&quot;&gt;vagrant up&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;vagrant 쉘 접속: &lt;code class=&quot;highlighter-rouge&quot;&gt;vagrant ssh&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;프로젝트 폴더로 이동: &lt;code class=&quot;highlighter-rouge&quot;&gt;cd Code&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;라라벨 설치&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 최신 버전 설치&lt;/span&gt;
+composer create-project &lt;span class=&quot;nt&quot;&gt;--prefer-dist&lt;/span&gt; laravel/laravel sjahn.homestead.test
+
+&lt;span class=&quot;c&quot;&gt;# 특정 버전 설치&lt;/span&gt;
+composer create-project &lt;span class=&quot;nt&quot;&gt;--prefer-dist&lt;/span&gt; laravel/laravel 프로젝트명 &lt;span class=&quot;s2&quot;&gt;&quot;5.8.*&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;패키지-설치&quot;&gt;패키지 설치&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;프로젝트 폴더로 이동: &lt;code class=&quot;highlighter-rouge&quot;&gt;cd sjahn.homestead.test&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;패키지 설치: &lt;code class=&quot;highlighter-rouge&quot;&gt;composer install&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;패키지 업데이트: &lt;code class=&quot;highlighter-rouge&quot;&gt;composer update&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;위의 과정이 끝나면 브라우저에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;http://sjahn.homestead.test&lt;/code&gt; 접속을 한다.
+설치 과정에서 문제가 없다면 정상적으로 라라벨 기본 페이지가 나온다.&lt;/p&gt;
+
+&lt;h4 id=&quot;env-파일-내-database-설정&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; 파일 내 database 설정&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;homestead 데이터 베이스를 이용하려면 위처럼 설정을 해주면 된다.&lt;br /&gt;
+클라이언트 프로그램으로 데이터베이스에 연결하려면 33060 포트로 연결하면 접속이 된다.&lt;/p&gt;
+
+&lt;p&gt;2020.06.12 현재 mac 환경에서 workbench로 접속 시&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Protocol mismatch; server version = 11, client version = 10&lt;/code&gt; 라는 에러를 뱉으며 클라이언트 접속이 안되어서 ssh 터널링을 이용해서 접속을 하였다.&lt;br /&gt;
+로컬 환경에서 ssh 터널링이라니… 많이 황당했지만… 일단 접속은 잘되는 것을 확인하였다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SSH HOST:   192.168.10.10
+SSH User:   vagrant
+SSH Key:    ~/.ssh/id_rsa
+SSH PORT:   (empty)
+
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;데이터베이스 설정이 끝났으면, 이제 마이그레이션을 할 차례이다.&lt;br /&gt;
+&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;artisan migrate&lt;/code&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;회원모듈-패키지-설치&quot;&gt;회원모듈 패키지 설치&lt;/h4&gt;
+&lt;p&gt;기존에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:auth&lt;/code&gt;를 이용하면 되었는데, 6.x부터 사라진듯 하다.&lt;br /&gt;
+그런데 &lt;code class=&quot;highlighter-rouge&quot;&gt;users&lt;/code&gt; 테이블도 기본 마이그레이션에 있던데 왜 패키지로 분리된건지 모르겠다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;laravel/ui 패키지 설치: &lt;code class=&quot;highlighter-rouge&quot;&gt;composer require laravel/ui&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;auth 패키지 설치: &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan ui bootstrap --auth&lt;/code&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;bootstrap 외에 vue, react도 있지만 이번 프로젝트에는 js 사용을 최대한 안할 예정이라서 pass 했다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;npm 패키지 설치 및 실행: &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install &amp;amp;&amp;amp; npm run dev&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;브라우저에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;http://sjahn.homestead.test&lt;/code&gt;을 새로고침하면 우측 상단에 login, register 메뉴가 추가된 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;다음에는 회원 테이블에 &lt;code class=&quot;highlighter-rouge&quot;&gt;last_login_at&lt;/code&gt; 이라는 컬럼을 추가하고, 로그인할때마다 업데이트 되는 기능을 구현, 그리고 &lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt; 테이블과 게시판을 만드는 작업을 할 예정이다.&lt;/p&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">라라벨(laravel) 7.x 시작하기 (2) 이전글에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/laravel_logo.jpg" /></entry><entry><title type="html">라라벨(laravel) 7.x 시작하기 (1)</title><link href="http://localhost:4000/php/php-laravel-started.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (1)" /><published>2020-01-23T00:00:00+09:00</published><updated>2020-01-23T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-started</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-started.html">&lt;h3 id=&quot;라라벨laravel-7x-시작하기-1&quot;&gt;라라벨(laravel) 7.x 시작하기 (1)&lt;/h3&gt;
+&lt;p&gt;일전에 5.8 버전으로 작업을 해본 경험이 있었는데, 어느새 6.x를 지나고 7.x까지 온 듯하다.&lt;/p&gt;
+
+&lt;p&gt;최근에 개발 언어를 python으로 변경하면서 php쪽은 살짝 소외되었었는데, 공부용으로라도 기록해야할듯하여 처음부터 다시 진행해본다.&lt;/p&gt;
+
+&lt;p&gt;나는 Windows, Mac 두가지를 둘다 사용하므로 최대한 환경의 영향이 없는 homestead를 다시 이용하기로 했다.&lt;/p&gt;
+
+&lt;h4 id=&quot;준비물&quot;&gt;준비물&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/wiki/Downloads&quot;&gt;VirtualBox&lt;/a&gt; or VMWare&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.vagrantup.com/downloads.html&quot;&gt;Vagrant&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;git&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;설치-시-도움이-많이-되었던-페이지&quot;&gt;설치 시 도움이 많이 되었던 페이지&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://laravel.kr/docs/7.x/homestead&quot;&gt;라라벨 코리아 / 홈스테드&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev-sunny-jinny.tistory.com/3&quot;&gt;라라벨 vagrant 설치, 설정 등 좀 더 자세한 설명 페이지&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/31139284/using-vagrant-and-homestead-for-multiple-sites-and-per-project-installation&quot;&gt;가상호스트 추가 시 도움 될 페이지&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;vagrant-box-설치&quot;&gt;vagrant box 설치&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vagrant box add laravel/homestead&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;homestead-설치하기&quot;&gt;homestead 설치하기&lt;/h4&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# git clone&lt;/span&gt;
+git clone https://github.com/laravel/homestead.git
+
+&lt;span class=&quot;c&quot;&gt;# homestead folder 로 이동&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Homestead
+
+&lt;span class=&quot;c&quot;&gt;# release branch 변경&lt;/span&gt;
+git checkout release
+
+&lt;span class=&quot;c&quot;&gt;# Mac / Linux...&lt;/span&gt;
+bash init.sh
+
+&lt;span class=&quot;c&quot;&gt;# Windows...&lt;/span&gt;
+init.bat
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;homesteadyaml-작성하기&quot;&gt;Homestead.yaml 작성하기&lt;/h4&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;192.168.10.10&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2048&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;cpus&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;virtualbox&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;authorize&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;~/.ssh/id_rsa.pub&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;~/.ssh/id_rsa&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;folders&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/Users/sjahn/workspace&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/home/vagrant/Code&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;sites&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sjahn.homestead.test&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/home/vagrant/Code/sjahn.homestead.test/public&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;databases&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;homestead&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;mariadb&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ohmyzsh&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;webdriver&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# ports:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#     - send: 50000&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#       to: 5000&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#     - send: 7777&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#       to: 777&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#       protocol: udp&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;사실 공식 사이트에 친절하게 잘나와있어서 크게 변경할 것은 없었다.&lt;/p&gt;
+
+&lt;p&gt;자신의 로컬 개발 환경에 맞게 &lt;code class=&quot;highlighter-rouge&quot;&gt;folders&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;sites&lt;/code&gt; 맞 설명해주면 문제가 없을 것 같다.&lt;/p&gt;
+
+&lt;h4 id=&quot;hosts-파일에-추가&quot;&gt;hosts 파일에 추가&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Mac: sudo vi /etc/hosts&lt;/li&gt;
+  &lt;li&gt;Windows: C:\Windows\System32\drivers\etc\hosts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;192.168.10.10	    sjahn.homestead.test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;자주-사용하는-vagrant-command&quot;&gt;자주 사용하는 vagrant command&lt;/h4&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# vagrant 실행&lt;/span&gt;
+vagrant up
+
+&lt;span class=&quot;c&quot;&gt;# vagrant 일시 중지&lt;/span&gt;
+vagrant &lt;span class=&quot;nb&quot;&gt;suspend&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# vagrant 종료&lt;/span&gt;
+vagrant halt
+
+&lt;span class=&quot;c&quot;&gt;# 설정 파일 수정 후 적용&lt;/span&gt;
+vagrant reload &lt;span class=&quot;nt&quot;&gt;--provision&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vagrant reload --provision&lt;/code&gt; 의 경우에는 Homestead.yaml 파일을 수정하는 경우에 쓰인다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+여기까지 진행했다면 초반 환경 구축은 거의 끝났다.&lt;br /&gt;
+글이 길어지므로 &lt;a href=&quot;/php/php-laravel-stated_2.html&quot;&gt;다음글&lt;/a&gt;에서 계속&lt;/p&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">라라벨(laravel) 7.x 시작하기 (1) 일전에 5.8 버전으로 작업을 해본 경험이 있었는데, 어느새 6.x를 지나고 7.x까지 온 듯하다.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/laravel_logo.jpg" /></entry><entry><title type="html">pip mysqlclient 설치 시 에러</title><link href="http://localhost:4000/python/pip-mysql-client-error.html" rel="alternate" type="text/html" title="pip mysqlclient 설치 시 에러" /><published>2020-01-20T00:00:00+09:00</published><updated>2020-01-20T00:00:00+09:00</updated><id>http://localhost:4000/python/pip-mysql-client-error</id><content type="html" xml:base="http://localhost:4000/python/pip-mysql-client-error.html">&lt;h3 id=&quot;pip-mysql-client-설치-시-에러가-발생할-때&quot;&gt;pip mysql-client 설치 시 에러가 발생할 때&lt;/h3&gt;
 
 &lt;p&gt;정확하게는 특정 에러 밖에 해결 못하지만&lt;/p&gt;
 

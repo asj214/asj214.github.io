@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://asj214.github.io/python/pip-mysql-client-error.html</loc>
+<loc>http://localhost:4000/python/pip-mysql-client-error.html</loc>
 <lastmod>2020-01-20T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>https://asj214.github.io/menu/about.html</loc>
+<loc>http://localhost:4000/php/php-laravel-started.html</loc>
+<lastmod>2020-01-23T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>https://asj214.github.io/menu/contact.html</loc>
+<loc>http://localhost:4000/php/php-laravel-stated_2.html</loc>
+<lastmod>2020-01-26T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>https://asj214.github.io/</loc>
+<loc>http://localhost:4000/menu/about.html</loc>
 </url>
 <url>
-<loc>https://asj214.github.io/menu/writing.html</loc>
+<loc>http://localhost:4000/menu/contact.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/menu/writing.html</loc>
 </url>
 </urlset>
