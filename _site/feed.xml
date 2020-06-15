@@ -1,4 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-12T13:40:04+09:00</updated><id>http://localhost:4000/</id><title type="html">주피라이터</title><subtitle>기록되지 않는 것은 기억되지 않는다.</subtitle><author><name>sjahn</name></author><entry><title type="html">라라벨(laravel) 7.x 시작하기 (2)</title><link href="http://localhost:4000/php/php-laravel-stated_2.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (2)" /><published>2020-01-26T00:00:00+09:00</published><updated>2020-01-26T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-stated_2</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-stated_2.html">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-16T06:00:56+09:00</updated><id>http://localhost:4000/</id><title type="html">주피라이터</title><subtitle>기록되지 않는 것은 기억되지 않는다.</subtitle><author><name>sjahn</name></author><entry><title type="html">라라벨(laravel) 7.x 시작하기 (3)</title><link href="http://localhost:4000/php/php-laravel-post.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (3)" /><published>2020-01-29T00:00:00+09:00</published><updated>2020-01-29T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-post</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-post.html">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;라라벨laravel-7x-시작하기-3&quot;&gt;라라벨(laravel) 7.x 시작하기 (3)&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;a href=&quot;/php/php-laravel-install.html&quot;&gt;이전글&lt;/a&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;composer&lt;/code&gt;로 라라벨을 설치하고, 
+laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다.&lt;br /&gt;
+&lt;br /&gt;
+이번에는 회원 테이블에 최종 로그인 날짜를 기록하는 기능을 추가하고, 간단한 게시판을 만들어볼 예정이다.&lt;br /&gt;
+&lt;br /&gt;
+기존에 라라벨, 장고, 루비온더레일즈같은 프레임워크를 사용해본 경험이 없는 사람들에게는 많이 생소한 개발방식이라 이 방식을 익히는 것이 굉장히 중요하다.&lt;br /&gt;
+&lt;br /&gt;
+가장 핵심이 되는 것은 &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan&lt;/code&gt;을 이용한 db 마이그레이션, 모델 컨트롤러 생성이다.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;최종-로그인-컬럼-추가하기&quot;&gt;최종 로그인 컬럼 추가하기&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;마이그레이션 파일 생성&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:migration add_columns_in_users --table=users&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;database/migrations&lt;/code&gt;에 새로 생성된 마이그레이션 파일에 컬럼 추가 코드 작성
+    &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+
+     &lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'users'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Blueprint&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;// 최근 접속 일
+&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'last_login_at'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nullable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'remember_token'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;마이그레이션 실행&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan migrate&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app/Http/Controllers/Auth/LoginController.php&lt;/code&gt; 에 메소드 추가
+    &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;authenticated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Request&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+     &lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'last_login_at'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Y-m-d H:i:s'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]);&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app/User.php&lt;/code&gt; 에 &lt;code class=&quot;highlighter-rouge&quot;&gt;$fillable&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;last_login_at&lt;/code&gt; 추가
+    &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fillable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+     &lt;span class=&quot;s1&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'email'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'password'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'last_login_at'&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이제 로그인을 할때 마다 &lt;code class=&quot;highlighter-rouge&quot;&gt;users.last_login_at&lt;/code&gt; 에 날짜가 갱신된다.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;게시판-만들기&quot;&gt;게시판 만들기&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;마이그레이션 파일 생성
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:migration create_posts_table --create=posts&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;마이그레이션 파일 작성
+    &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'boards'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Blueprint&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+         &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bigIncrements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+         &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;integer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'user_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 작성자 아이디
+&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 제목
+&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'body'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 본문
+&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;timestamps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 생성일, 수정일
+&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;softDeletes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 삭제일
+&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'deleted_at'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;마이그레이션
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan migrate&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;모델 생성
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:model Post&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컨트롤러 생성
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:controller PostController --resource&lt;/code&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;–resource 를 추가시키면 컨트롤러에 기본적인 CRUD 메소드들을 알아서 생성해준다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;routes/web.php&lt;/code&gt;에 라우트 추가
+    &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nx&quot;&gt;Route&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'posts'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'PostController'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;이렇게 간단하게 추가가 가능하지만… 실제 업무에서 쓸때는 개별로 추가하는 방식을 사용하는 사례가 많다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;라우트 확인
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan route:list --name=posts&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;resources/views/layouts/app.blade.php&lt;/code&gt; gnb에 post 링크 추가
+    &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar-nav mr-auto&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nav-item dropdown&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbarDropdown&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nav-link dropdown-toggle&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-toggle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dropdown&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-haspopup=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-expanded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;v-pre&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+             {{ __('Post') }} &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;caret&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dropdown-menu dropdown-menu-right&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbarDropdown&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+             &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dropdown-item&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ route('posts.index') }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ __('List') }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+             @if(Auth::guard()-&amp;gt;check())
+             &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dropdown-item&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ route('posts.create') }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ __('Write') }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+             @endif
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;중간에 &lt;code class=&quot;highlighter-rouge&quot;&gt;@if(Auth::guard()-&amp;gt;check())&lt;/code&gt;라는 조건을 걸어 로그인한 사용자한테만 글쓰기 버튼은 노출되는 것으로 처리&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app/Http/Controllers/PostController.php&lt;/code&gt; 에 사용자 인증 조건 추가
+    &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+     &lt;span class=&quot;c1&quot;&gt;// 사용자 권한
+&lt;/span&gt;     &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;middleware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'auth'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'except'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'index'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'show'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]);&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">라라벨(laravel) 7.x 시작하기 (3) 이전글에서는 composer로 라라벨을 설치하고, laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다. 이번에는 회원 테이블에 최종 로그인 날짜를 기록하는 기능을 추가하고, 간단한 게시판을 만들어볼 예정이다. 기존에 라라벨, 장고, 루비온더레일즈같은 프레임워크를 사용해본 경험이 없는 사람들에게는 많이 생소한 개발방식이라 이 방식을 익히는 것이 굉장히 중요하다. 가장 핵심이 되는 것은 artisan을 이용한 db 마이그레이션, 모델 컨트롤러 생성이다.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/laravel_logo.jpg" /></entry><entry><title type="html">라라벨(laravel) 7.x 시작하기 (2)</title><link href="http://localhost:4000/php/php-laravel-install.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (2)" /><published>2020-01-26T00:00:00+09:00</published><updated>2020-01-26T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-install</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-install.html">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;라라벨laravel-7x-시작하기-2&quot;&gt;라라벨(laravel) 7.x 시작하기 (2)&lt;/h3&gt;
 &lt;p&gt;&lt;br /&gt;
 &lt;a href=&quot;/php/php-laravel-started.html&quot;&gt;이전글&lt;/a&gt;에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,&lt;/p&gt;
@@ -79,7 +195,7 @@ DB_PASSWORD=secret
 
 &lt;p&gt;브라우저에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;http://sjahn.homestead.test&lt;/code&gt;을 새로고침하면 우측 상단에 login, register 메뉴가 추가된 것을 확인할 수 있다.&lt;/p&gt;
 
-&lt;p&gt;다음에는 회원 테이블에 &lt;code class=&quot;highlighter-rouge&quot;&gt;last_login_at&lt;/code&gt; 이라는 컬럼을 추가하고, 로그인할때마다 업데이트 되는 기능을 구현, 그리고 &lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt; 테이블과 게시판을 만드는 작업을 할 예정이다.&lt;/p&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">라라벨(laravel) 7.x 시작하기 (2) 이전글에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/laravel_logo.jpg" /></entry><entry><title type="html">라라벨(laravel) 7.x 시작하기 (1)</title><link href="http://localhost:4000/php/php-laravel-started.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (1)" /><published>2020-01-23T00:00:00+09:00</published><updated>2020-01-23T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-started</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-started.html">&lt;h3 id=&quot;라라벨laravel-7x-시작하기-1&quot;&gt;라라벨(laravel) 7.x 시작하기 (1)&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;/php/php-laravel-post.html&quot;&gt;다음글&lt;/a&gt;에는 회원 테이블에 &lt;code class=&quot;highlighter-rouge&quot;&gt;last_login_at&lt;/code&gt; 이라는 컬럼을 추가하고, 로그인할때마다 업데이트 되는 기능을 구현, 그리고 &lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt; 테이블과 게시판을 만드는 작업을 할 예정이다.&lt;/p&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">라라벨(laravel) 7.x 시작하기 (2) 이전글에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/laravel_logo.jpg" /></entry><entry><title type="html">라라벨(laravel) 7.x 시작하기 (1)</title><link href="http://localhost:4000/php/php-laravel-started.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (1)" /><published>2020-01-23T00:00:00+09:00</published><updated>2020-01-23T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-started</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-started.html">&lt;h3 id=&quot;라라벨laravel-7x-시작하기-1&quot;&gt;라라벨(laravel) 7.x 시작하기 (1)&lt;/h3&gt;
 &lt;p&gt;일전에 5.8 버전으로 작업을 해본 경험이 있었는데, 어느새 6.x를 지나고 7.x까지 온 듯하다.&lt;/p&gt;
 
 &lt;p&gt;최근에 개발 언어를 python으로 변경하면서 php쪽은 살짝 소외되었었는데, 공부용으로라도 기록해야할듯하여 처음부터 다시 진행해본다.&lt;/p&gt;
@@ -189,7 +305,7 @@ vagrant reload &lt;span class=&quot;nt&quot;&gt;--provision&lt;/span&gt;
 &lt;p&gt;&lt;br /&gt;
 &lt;br /&gt;
 여기까지 진행했다면 초반 환경 구축은 거의 끝났다.&lt;br /&gt;
-글이 길어지므로 &lt;a href=&quot;/php/php-laravel-stated_2.html&quot;&gt;다음글&lt;/a&gt;에서 계속&lt;/p&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">라라벨(laravel) 7.x 시작하기 (1) 일전에 5.8 버전으로 작업을 해본 경험이 있었는데, 어느새 6.x를 지나고 7.x까지 온 듯하다.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/laravel_logo.jpg" /></entry><entry><title type="html">pip mysqlclient 설치 시 에러</title><link href="http://localhost:4000/python/pip-mysql-client-error.html" rel="alternate" type="text/html" title="pip mysqlclient 설치 시 에러" /><published>2020-01-20T00:00:00+09:00</published><updated>2020-01-20T00:00:00+09:00</updated><id>http://localhost:4000/python/pip-mysql-client-error</id><content type="html" xml:base="http://localhost:4000/python/pip-mysql-client-error.html">&lt;h3 id=&quot;pip-mysql-client-설치-시-에러가-발생할-때&quot;&gt;pip mysql-client 설치 시 에러가 발생할 때&lt;/h3&gt;
+글이 길어지므로 &lt;a href=&quot;/php/php-laravel-install.html&quot;&gt;다음글&lt;/a&gt;에서 계속&lt;/p&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">라라벨(laravel) 7.x 시작하기 (1) 일전에 5.8 버전으로 작업을 해본 경험이 있었는데, 어느새 6.x를 지나고 7.x까지 온 듯하다.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/laravel_logo.jpg" /></entry><entry><title type="html">pip mysqlclient 설치 시 에러</title><link href="http://localhost:4000/python/pip-mysql-client-error.html" rel="alternate" type="text/html" title="pip mysqlclient 설치 시 에러" /><published>2020-01-20T00:00:00+09:00</published><updated>2020-01-20T00:00:00+09:00</updated><id>http://localhost:4000/python/pip-mysql-client-error</id><content type="html" xml:base="http://localhost:4000/python/pip-mysql-client-error.html">&lt;h3 id=&quot;pip-mysql-client-설치-시-에러가-발생할-때&quot;&gt;pip mysql-client 설치 시 에러가 발생할 때&lt;/h3&gt;
 
 &lt;p&gt;정확하게는 특정 에러 밖에 해결 못하지만&lt;/p&gt;
 

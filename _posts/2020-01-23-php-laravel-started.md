@@ -119,4 +119,4 @@ vagrant reload --provision
 <br>
 <br>
 여기까지 진행했다면 초반 환경 구축은 거의 끝났다.  
-글이 길어지므로 [다음글](/php/php-laravel-stated_2.html)에서 계속  
+글이 길어지므로 [다음글](/php/php-laravel-install.html)에서 계속  

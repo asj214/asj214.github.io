@@ -88,4 +88,4 @@ DB_PASSWORD=secret
 
 브라우저에서 `http://sjahn.homestead.test`을 새로고침하면 우측 상단에 login, register 메뉴가 추가된 것을 확인할 수 있다.  
 
-다음에는 회원 테이블에 `last_login_at` 이라는 컬럼을 추가하고, 로그인할때마다 업데이트 되는 기능을 구현, 그리고 `posts` 테이블과 게시판을 만드는 작업을 할 예정이다.
+[다음글](/php/php-laravel-post.html)에는 회원 테이블에 `last_login_at` 이라는 컬럼을 추가하고, 로그인할때마다 업데이트 되는 기능을 구현, 그리고 `posts` 테이블과 게시판을 만드는 작업을 할 예정이다.
