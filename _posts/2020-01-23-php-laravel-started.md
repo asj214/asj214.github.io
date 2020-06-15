@@ -4,7 +4,6 @@ title: "라라벨(laravel) 7.x 시작하기 (1)"
 author: "sjahn"
 categories: php
 tags: [php, laravel]
-image: laravel_logo.jpg
 ---
 
 ### 라라벨(laravel) 7.x 시작하기 (1)
