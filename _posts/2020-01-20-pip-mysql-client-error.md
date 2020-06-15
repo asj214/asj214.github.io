@@ -3,7 +3,7 @@ layout: post
 title: "pip mysqlclient 설치 시 에러"
 author: "sjahn"
 categories: python
-tags: [python, pip, mysql-client]
+tags: [python, pip, error]
 image: iu_thumbnail.jpg
 ---
 
