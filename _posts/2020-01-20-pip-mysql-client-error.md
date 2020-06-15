@@ -7,8 +7,6 @@ tags: [python, pip, mysql-client]
 image: iu_thumbnail.jpg
 ---
 
-### pip mysql-client 설치 시 에러가 발생할 때
-
 정확하게는 특정 에러 밖에 해결 못하지만  
 
 내 경우에는 거의 90% 확률로 `mysqlclient` 모듈 설치 에러가 해결되었던 것 같다.  

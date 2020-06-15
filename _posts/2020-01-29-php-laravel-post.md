@@ -6,8 +6,7 @@ categories: php
 tags: [php, laravel]
 ---
 
-<br>
-### 라라벨(laravel) 7.x 시작하기 (3)
+
 <br>
 [이전글](/php/php-laravel-install.html)에서는 `composer`로 라라벨을 설치하고, 
 laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다.  

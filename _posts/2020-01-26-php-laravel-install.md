@@ -7,8 +7,6 @@ tags: [php, laravel]
 ---
 
 <br>
-### 라라벨(laravel) 7.x 시작하기 (2)
-<br>
 [이전글](/php/php-laravel-started.html)에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,  
 
 

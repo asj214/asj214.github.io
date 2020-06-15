@@ -12,9 +12,7 @@
 					<dc:creator>sjahn</dc:creator>
 				
 				
-					<description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h3 id=&quot;라라벨laravel-7x-시작하기-3&quot;&gt;라라벨(laravel) 7.x 시작하기 (3)&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;
+					<description>&lt;p&gt;&lt;br /&gt;
 &lt;a href=&quot;/php/php-laravel-install.html&quot;&gt;이전글&lt;/a&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;composer&lt;/code&gt;로 라라벨을 설치하고, 
 laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다.&lt;br /&gt;
 &lt;br /&gt;
@@ -38,9 +36,7 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
 					<dc:creator>sjahn</dc:creator>
 				
 				
-					<description>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;h3 id=&quot;라라벨laravel-7x-시작하기-2&quot;&gt;라라벨(laravel) 7.x 시작하기 (2)&lt;/h3&gt;
-&lt;p&gt;&lt;br /&gt;
+					<description>&lt;p&gt;&lt;br /&gt;
 &lt;a href=&quot;/php/php-laravel-started.html&quot;&gt;이전글&lt;/a&gt;에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,&lt;/p&gt;
 
 </description>
@@ -56,8 +52,7 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
 					<dc:creator>sjahn</dc:creator>
 				
 				
-					<description>&lt;h3 id=&quot;라라벨laravel-7x-시작하기-1&quot;&gt;라라벨(laravel) 7.x 시작하기 (1)&lt;/h3&gt;
-&lt;p&gt;일전에 5.8 버전으로 작업을 해본 경험이 있었는데, 어느새 6.x를 지나고 7.x까지 온 듯하다.&lt;/p&gt;
+					<description>&lt;p&gt;일전에 5.8 버전으로 작업을 해본 경험이 있었는데, 어느새 6.x를 지나고 7.x까지 온 듯하다.&lt;/p&gt;
 
 </description>
 				
@@ -72,7 +67,7 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
 					<dc:creator>sjahn</dc:creator>
 				
 				
-					<description>&lt;h3 id=&quot;pip-mysql-client-설치-시-에러가-발생할-때&quot;&gt;pip mysql-client 설치 시 에러가 발생할 때&lt;/h3&gt;
+					<description>&lt;p&gt;정확하게는 특정 에러 밖에 해결 못하지만&lt;/p&gt;
 
 </description>
 				
