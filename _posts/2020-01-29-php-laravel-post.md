@@ -117,3 +117,25 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
     ```
+    > 위 처럼 컨트롤러 생성자에 미들웨어로 추가해두면 로그인하지 않은 유저는 index, show 말고는 진입이 불가능하다.
+
+이후부터의 작업은 너무 방대해서 일일히 작성하기가 힘들어서 작성한 [코드](https://github.com/asj214/sjahn.homestead.test/blob/master/app/Http/Controllers/PostController.php)를 확인 사실 컨트롤러 보면 뭐 더 없다.  
+<br>
+그나마 신경써야할 부분인 softdeletes 인데 이는 DB에서 삭제 시 실제로 삭제하는 것이 아닌, deleted_at 컬럼에 삭제 당시 날짜를 기록하여
+실제로는 삭제하지 않았는데 삭제 처리되었다는 식으로 처리하는 가능이다.  
+이 기능을 구현하려면 마이그레이션 작성 시 `$table->softDeletes();` 라는 것을 추가해준 후 모델 파일에 몇 가지 코드를 추가해주기만 하면 된다.  
+
+```php
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Post extends Model {
+    //
+    use SoftDeletes;
+
+    protected $table = "posts";
+    protected $dates = ['deleted_at'];
+}
+```

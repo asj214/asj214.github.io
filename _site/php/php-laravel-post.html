@@ -224,8 +224,31 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
 </span>     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'except'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'index'</span><span class="p">,</span> <span class="s1">'show'</span><span class="p">]]);</span>
  <span class="p">}</span>
 </code></pre></div>    </div>
+    <blockquote>
+      <p>위 처럼 컨트롤러 생성자에 미들웨어로 추가해두면 로그인하지 않은 유저는 index, show 말고는 진입이 불가능하다.</p>
+    </blockquote>
   </li>
 </ol>
+
+<p>이후부터의 작업은 너무 방대해서 일일히 작성하기가 힘들어서 작성한 <a href="https://github.com/asj214/sjahn.homestead.test/blob/master/app/Http/Controllers/PostController.php">코드</a>를 확인 사실 컨트롤러 보면 뭐 더 없다.<br />
+<br />
+그나마 신경써야할 부분인 softdeletes 인데 이는 DB에서 삭제 시 실제로 삭제하는 것이 아닌, deleted_at 컬럼에 삭제 당시 날짜를 기록하여
+실제로는 삭제하지 않았는데 삭제 처리되었다는 식으로 처리하는 가능이다.<br />
+이 기능을 구현하려면 마이그레이션 작성 시 <code class="highlighter-rouge">$table-&gt;softDeletes();</code> 라는 것을 추가해준 후 모델 파일에 몇 가지 코드를 추가해주기만 하면 된다.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nx">App</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\SoftDeletes</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">Model</span> <span class="p">{</span>
+    <span class="c1">//
+</span>    <span class="k">use</span> <span class="nx">SoftDeletes</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s2">"posts"</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'deleted_at'</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 
 <span class="post-date">
