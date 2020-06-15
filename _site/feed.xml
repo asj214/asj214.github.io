@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-16T07:02:27+09:00</updated><id>http://localhost:4000/</id><title type="html">주피라이터</title><subtitle>기록되지 않는 것은 기억되지 않는다.</subtitle><author><name>sjahn</name></author><entry><title type="html">라라벨(laravel) 7.x 시작하기 (3)</title><link href="http://localhost:4000/php/php-laravel-post.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (3)" /><published>2020-01-29T00:00:00+09:00</published><updated>2020-01-29T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-post</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-post.html">&lt;p&gt;&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-16T07:12:32+09:00</updated><id>http://localhost:4000/</id><title type="html">주피라이터</title><subtitle>기록되지 않는 것은 기억되지 않는다.</subtitle><author><name>sjahn</name></author><entry><title type="html">라라벨(laravel) 7.x 시작하기 (3)</title><link href="http://localhost:4000/php/php-laravel-post.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (3)" /><published>2020-01-29T00:00:00+09:00</published><updated>2020-01-29T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-post</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-post.html">&lt;p&gt;&lt;br /&gt;
 &lt;a href=&quot;/php/php-laravel-install.html&quot;&gt;이전글&lt;/a&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;composer&lt;/code&gt;로 라라벨을 설치하고, 
-laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다.&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;laravel/ui&lt;/code&gt; 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다.&lt;br /&gt;
 &lt;br /&gt;
 이번에는 회원 테이블에 최종 로그인 날짜를 기록하는 기능을 추가하고, 간단한 게시판을 만들어볼 예정이다.&lt;br /&gt;
 &lt;br /&gt;
 기존에 라라벨, 장고, 루비온더레일즈같은 프레임워크를 사용해본 경험이 없는 사람들에게는 많이 생소한 개발방식이라 이 방식을 익히는 것이 굉장히 중요하다.&lt;br /&gt;
 &lt;br /&gt;
-가장 핵심이 되는 것은 &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan&lt;/code&gt;을 이용한 db 마이그레이션, 모델 컨트롤러 생성이다.&lt;br /&gt;
+가장 핵심이 되는 것은 &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan&lt;/code&gt;을 이용한 db 마이그레이션, 모델, 컨트롤러 생성이다.&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;최종-로그인-컬럼-추가하기&quot;&gt;최종 로그인 컬럼 추가하기&lt;/h4&gt;
@@ -48,7 +48,7 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;마이그레이션 파일 생성
+    &lt;p&gt;마이그레이션 파일 생성&lt;br /&gt;
  &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:migration create_posts_table --create=posts&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;마이그레이션 파일 작성
@@ -66,14 +66,14 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;마이그레이션
+    &lt;p&gt;마이그레이션&lt;br /&gt;
  &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan migrate&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;모델 생성
+    &lt;p&gt;모델 생성&lt;br /&gt;
  &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:model Post&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;컨트롤러 생성
+  &lt;li&gt;컨트롤러 생성&lt;br /&gt;
  &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:controller PostController --resource&lt;/code&gt;
     &lt;blockquote&gt;
       &lt;p&gt;–resource 를 추가시키면 컨트롤러에 기본적인 CRUD 메소드들을 알아서 생성해준다.&lt;/p&gt;
@@ -85,7 +85,7 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
     &lt;p&gt;이렇게 간단하게 추가가 가능하지만… 실제 업무에서 쓸때는 개별로 추가하는 방식을 사용하는 사례가 많다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;라우트 확인
+    &lt;p&gt;라우트 확인&lt;br /&gt;
  &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan route:list --name=posts&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;resources/views/layouts/app.blade.php&lt;/code&gt; gnb에 post 링크 추가
@@ -119,7 +119,7 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
 
 &lt;p&gt;이후부터의 작업은 너무 방대해서 일일히 작성하기가 힘들어서 작성한 &lt;a href=&quot;https://github.com/asj214/sjahn.homestead.test/blob/master/app/Http/Controllers/PostController.php&quot;&gt;코드&lt;/a&gt;를 확인 사실 컨트롤러 보면 뭐 더 없다.&lt;br /&gt;
 &lt;br /&gt;
-그나마 신경써야할 부분인 softdeletes 인데 이는 DB에서 삭제 시 실제로 삭제하는 것이 아닌, deleted_at 컬럼에 삭제 당시 날짜를 기록하여
+그나마 신경써야할 부분인 &lt;code class=&quot;highlighter-rouge&quot;&gt;softDeletes&lt;/code&gt; 인데 이는 DB에서 삭제 시 실제로 삭제하는 것이 아닌, &lt;code class=&quot;highlighter-rouge&quot;&gt;deleted_at&lt;/code&gt; 컬럼에 삭제 당시 날짜를 기록하여
 실제로는 삭제하지 않았는데 삭제 처리되었다는 식으로 처리하는 가능이다.&lt;br /&gt;
 이 기능을 구현하려면 마이그레이션 작성 시 &lt;code class=&quot;highlighter-rouge&quot;&gt;$table-&amp;gt;softDeletes();&lt;/code&gt; 라는 것을 추가해준 후 모델 파일에 몇 가지 코드를 추가해주기만 하면 된다.&lt;/p&gt;
 
@@ -135,7 +135,7 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
     &lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$table&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;posts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$dates&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'deleted_at'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">이전글에서는 composer로 라라벨을 설치하고, laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다. 이번에는 회원 테이블에 최종 로그인 날짜를 기록하는 기능을 추가하고, 간단한 게시판을 만들어볼 예정이다. 기존에 라라벨, 장고, 루비온더레일즈같은 프레임워크를 사용해본 경험이 없는 사람들에게는 많이 생소한 개발방식이라 이 방식을 익히는 것이 굉장히 중요하다. 가장 핵심이 되는 것은 artisan을 이용한 db 마이그레이션, 모델 컨트롤러 생성이다.</summary></entry><entry><title type="html">라라벨(laravel) 7.x 시작하기 (2)</title><link href="http://localhost:4000/php/php-laravel-install.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (2)" /><published>2020-01-26T00:00:00+09:00</published><updated>2020-01-26T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-install</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-install.html">&lt;p&gt;&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">이전글에서는 composer로 라라벨을 설치하고, laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다. 이번에는 회원 테이블에 최종 로그인 날짜를 기록하는 기능을 추가하고, 간단한 게시판을 만들어볼 예정이다. 기존에 라라벨, 장고, 루비온더레일즈같은 프레임워크를 사용해본 경험이 없는 사람들에게는 많이 생소한 개발방식이라 이 방식을 익히는 것이 굉장히 중요하다. 가장 핵심이 되는 것은 artisan을 이용한 db 마이그레이션, 모델, 컨트롤러 생성이다.</summary></entry><entry><title type="html">라라벨(laravel) 7.x 시작하기 (2)</title><link href="http://localhost:4000/php/php-laravel-install.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 시작하기 (2)" /><published>2020-01-26T00:00:00+09:00</published><updated>2020-01-26T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-install</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-install.html">&lt;p&gt;&lt;br /&gt;
 &lt;a href=&quot;/php/php-laravel-started.html&quot;&gt;이전글&lt;/a&gt;에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,&lt;/p&gt;
 
 &lt;p&gt;해당 페이지에서는 composer를 이용한 라라벨 설치 및 기본 설정을 기록한다.&lt;/p&gt;
@@ -179,7 +179,7 @@ DB_PASSWORD=secret
 
 &lt;p&gt;2020.06.12 현재 mac 환경에서 workbench로 접속 시&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;Protocol mismatch; server version = 11, client version = 10&lt;/code&gt; 라는 에러를 뱉으며 클라이언트 접속이 안되어서 ssh 터널링을 이용해서 접속을 하였다.&lt;br /&gt;
-로컬 환경에서 ssh 터널링이라니… 많이 황당했지만… 일단 접속은 잘되는 것을 확인하였다.&lt;/p&gt;
+로컬 환경에서 ssh 터널링이라니… 많이 당황스럽지만… 일단 접속은 잘되는 것을 확인하였다.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SSH HOST:   192.168.10.10
 SSH User:   vagrant

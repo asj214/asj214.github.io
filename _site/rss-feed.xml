@@ -14,13 +14,13 @@
 				
 					<description>&lt;p&gt;&lt;br /&gt;
 &lt;a href=&quot;/php/php-laravel-install.html&quot;&gt;이전글&lt;/a&gt;에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;composer&lt;/code&gt;로 라라벨을 설치하고, 
-laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다.&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;laravel/ui&lt;/code&gt; 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다.&lt;br /&gt;
 &lt;br /&gt;
 이번에는 회원 테이블에 최종 로그인 날짜를 기록하는 기능을 추가하고, 간단한 게시판을 만들어볼 예정이다.&lt;br /&gt;
 &lt;br /&gt;
 기존에 라라벨, 장고, 루비온더레일즈같은 프레임워크를 사용해본 경험이 없는 사람들에게는 많이 생소한 개발방식이라 이 방식을 익히는 것이 굉장히 중요하다.&lt;br /&gt;
 &lt;br /&gt;
-가장 핵심이 되는 것은 &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan&lt;/code&gt;을 이용한 db 마이그레이션, 모델 컨트롤러 생성이다.&lt;br /&gt;
+가장 핵심이 되는 것은 &lt;code class=&quot;highlighter-rouge&quot;&gt;artisan&lt;/code&gt;을 이용한 db 마이그레이션, 모델, 컨트롤러 생성이다.&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
 </description>
