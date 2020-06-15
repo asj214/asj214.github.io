@@ -58,11 +58,10 @@
 <link rel="canonical" href="http://localhost:4000/php/php-laravel-post.html" />
 <meta property="og:url" content="http://localhost:4000/php/php-laravel-post.html" />
 <meta property="og:site_name" content="주피라이터" />
-<meta property="og:image" content="http://localhost:4000/laravel_logo.jpg" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-01-29T00:00:00+09:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"sjahn"},"url":"http://localhost:4000/php/php-laravel-post.html","headline":"라라벨(laravel) 7.x 시작하기 (3)","dateModified":"2020-01-29T00:00:00+09:00","datePublished":"2020-01-29T00:00:00+09:00","description":"라라벨(laravel) 7.x 시작하기 (3) 이전글에서는 composer로 라라벨을 설치하고, laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다. 이번에는 회원 테이블에 최종 로그인 날짜를 기록하는 기능을 추가하고, 간단한 게시판을 만들어볼 예정이다. 기존에 라라벨, 장고, 루비온더레일즈같은 프레임워크를 사용해본 경험이 없는 사람들에게는 많이 생소한 개발방식이라 이 방식을 익히는 것이 굉장히 중요하다. 가장 핵심이 되는 것은 artisan을 이용한 db 마이그레이션, 모델 컨트롤러 생성이다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/php/php-laravel-post.html"},"@type":"BlogPosting","image":"http://localhost:4000/laravel_logo.jpg","@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"sjahn"},"url":"http://localhost:4000/php/php-laravel-post.html","headline":"라라벨(laravel) 7.x 시작하기 (3)","dateModified":"2020-01-29T00:00:00+09:00","datePublished":"2020-01-29T00:00:00+09:00","description":"라라벨(laravel) 7.x 시작하기 (3) 이전글에서는 composer로 라라벨을 설치하고, laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구현을 하였다. 이번에는 회원 테이블에 최종 로그인 날짜를 기록하는 기능을 추가하고, 간단한 게시판을 만들어볼 예정이다. 기존에 라라벨, 장고, 루비온더레일즈같은 프레임워크를 사용해본 경험이 없는 사람들에게는 많이 생소한 개발방식이라 이 방식을 익히는 것이 굉장히 중요하다. 가장 핵심이 되는 것은 artisan을 이용한 db 마이그레이션, 모델 컨트롤러 생성이다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/php/php-laravel-post.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -105,8 +104,6 @@
   라라벨(laravel) 7.x 시작하기 (3)
 </h1>
 
-
-  <img src="/assets/img/laravel_logo.jpg">
 
 
 <p><br /></p>
@@ -166,7 +163,7 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
   </li>
   <li>마이그레이션 파일 작성
     <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">(){</span>
-     <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">'boards'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">){</span>
+     <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">){</span>
          <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">bigIncrements</span><span class="p">(</span><span class="s1">'id'</span><span class="p">);</span>
          <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">integer</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">);</span> <span class="c1">// 작성자 아이디
 </span>         <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s1">'title'</span><span class="p">);</span> <span class="c1">// 제목

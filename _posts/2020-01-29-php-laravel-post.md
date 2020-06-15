@@ -4,7 +4,6 @@ title: "라라벨(laravel) 7.x 시작하기 (3)"
 author: "sjahn"
 categories: php
 tags: [php, laravel]
-image: laravel_logo.jpg
 ---
 
 <br>
@@ -61,7 +60,7 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
 2. 마이그레이션 파일 작성
     ```php
     public function up(){
-        Schema::create('boards', function (Blueprint $table){
+        Schema::create('posts', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->integer('user_id'); // 작성자 아이디
             $table->string('title'); // 제목
