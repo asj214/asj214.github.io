@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-17T23:46:16+09:00</updated><id>http://localhost:4000/</id><title type="html">주피라이터</title><subtitle>기록되지 않는 것은 기억되지 않는다.</subtitle><author><name>sjahn</name></author><entry><title type="html">라라벨(laravel) 7.x 좋아요 기능 추가</title><link href="http://localhost:4000/php/php-laravel-like.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 좋아요 기능 추가" /><published>2020-02-08T00:00:00+09:00</published><updated>2020-02-08T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-like</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-like.html">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:migration create_likes_table --create=likes&lt;/code&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-18T01:55:19+09:00</updated><id>http://localhost:4000/</id><title type="html">주피라이터</title><subtitle>기록되지 않는 것은 기억되지 않는다.</subtitle><author><name>sjahn</name></author><entry><title type="html">라라벨(laravel) 7.x 좋아요 기능 추가</title><link href="http://localhost:4000/php/php-laravel-like.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 좋아요 기능 추가" /><published>2020-02-08T00:00:00+09:00</published><updated>2020-02-08T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-like</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-like.html">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:migration create_likes_table --create=likes&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -15,7 +15,67 @@
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;artisan migrate&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:model Like&lt;/code&gt;&lt;/p&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">artisan make:migration create_likes_table --create=likes</summary></entry><entry><title type="html">라라벨(laravel) 7.x 댓글 기능 추가</title><link href="http://localhost:4000/php/php-laravel-comments.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 댓글 기능 추가" /><published>2020-02-05T00:00:00+09:00</published><updated>2020-02-05T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-comments</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-comments.html">&lt;p&gt;comments 마이그레이션 파일 생성&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:model Like&lt;/code&gt;&lt;/p&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">artisan make:migration create_likes_table --create=likes</summary></entry><entry><title type="html">라라벨(laravel) 7.x 데이터 베이스 쿼리 로그</title><link href="http://localhost:4000/php/php-laravel-query-log.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 데이터 베이스 쿼리 로그" /><published>2020-02-06T00:00:00+09:00</published><updated>2020-02-06T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-query-log</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-query-log.html">&lt;p&gt;라라벨을 사용하면서 데이터베이스 쿼리로그가 궁금할때가 있다.&lt;br /&gt;
+대부분의 프레임워크에서는 기본으로 제공하는 기능들 같지만 라라벨은 아니였다.&lt;br /&gt;
+그래서 별로로 추가 시켜주어야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app/Providers/AppServiceProvider.php&lt;/code&gt; 에 추가&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;App\Providers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Illuminate\Support\Facades\DB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Illuminate\Support\Facades\Log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Illuminate\Support\ServiceProvider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Illuminate\Database\Events\QueryExecuted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AppServiceProvider&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ServiceProvider&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;/**
+     * Register any application services.
+     *
+     * @return void
+     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;sd&quot;&gt;/**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;boot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// database query logging
+&lt;/span&gt;        &lt;span class=&quot;nx&quot;&gt;DB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bindings&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$binding&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;\DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                    &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bindings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$binding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'\'Y-m-d H:i:s\''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;is_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
+                        &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bindings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;'&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$binding&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;'&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;// Insert bindings into query
+&lt;/span&gt;            &lt;span class=&quot;nv&quot;&gt;$boundSql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str_replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%%'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%s'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;nv&quot;&gt;$boundSql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;vsprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$boundSql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bindings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;----------------------------------------------------------------&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$boundSql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot; (&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;s)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;로그 파일 화면에 출력&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;tail -f storage/logs/laravel.log&lt;/code&gt;&lt;/p&gt;</content><author><name>sjahn</name></author><category term="php" /><category term="laravel" /><summary type="html">라라벨을 사용하면서 데이터베이스 쿼리로그가 궁금할때가 있다. 대부분의 프레임워크에서는 기본으로 제공하는 기능들 같지만 라라벨은 아니였다. 그래서 별로로 추가 시켜주어야한다.</summary></entry><entry><title type="html">라라벨(laravel) 7.x 댓글 기능 추가</title><link href="http://localhost:4000/php/php-laravel-comments.html" rel="alternate" type="text/html" title="라라벨(laravel) 7.x 댓글 기능 추가" /><published>2020-02-05T00:00:00+09:00</published><updated>2020-02-05T00:00:00+09:00</updated><id>http://localhost:4000/php/php-laravel-comments</id><content type="html" xml:base="http://localhost:4000/php/php-laravel-comments.html">&lt;p&gt;comments 마이그레이션 파일 생성&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;artisan make:migration create_comments_table --create=comments&lt;/code&gt;&lt;/p&gt;
 

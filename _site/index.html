@@ -131,6 +131,39 @@ public function up()
 
 <div class="posts">
   <h1>
+    <a href="/php/php-laravel-query-log.html">라라벨(laravel) 7.x 데이터 베이스 쿼리 로그</a>
+  </h1>
+  
+  <p>
+    라라벨을 사용하면서 데이터베이스 쿼리로그가 궁금할때가 있다.
+대부분의 프레임워크에서는 기본으로 제공하는 기능들 같지만 라라벨은 아니였다.
+그래서 별로로 추가 시켜주어야한다.
+
+app/Providers/AppServiceProvider.php 에 추가
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Events\QueryExecuted;
+
+
+class AppServiceProvi... <a href="/php/php-laravel-query-log.html">Read more</a>
+    <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> 06 Feb 2020 - <i class="fa fa-clock-o" aria-hidden="true"></i> 
+  
+  
+    less than 1 minute read
+  
+
+
+
+</span>
+  </p>
+</div>
+
+<div class="posts">
+  <h1>
     <a href="/php/php-laravel-comments.html">라라벨(laravel) 7.x 댓글 기능 추가</a>
   </h1>
   
@@ -218,42 +251,6 @@ laravel/ui 라는 패키지를 설치하여 회원가입, 로그인 기능 구�
   
   
     2 minute read
-  
-
-
-
-</span>
-  </p>
-</div>
-
-<div class="posts">
-  <h1>
-    <a href="/php/php-laravel-install.html">라라벨(laravel) 7.x 설치하기</a>
-  </h1>
-  
-  <p>
-    
-이전글에서는 라라벨 설치를 위한 로컬 개발환경을 구축했다면,
-
-해당 페이지에서는 composer를 이용한 라라벨 설치 및 기본 설정을 기록한다.
-
-라라벨(laravel) 설치
-
-  vagrant 실행: vagrant up
-  vagrant 쉘 접속: vagrant ssh
-  프로젝트 폴더로 이동: cd Code
-  라라벨 설치
-
-
-# 최신 버전 설치
-composer create-project --prefer-dist laravel/laravel sjahn.homestead.test
-
-# 특정 버전 설치
-composer create-project --prefer-dist laravel/laravel 프로젝트명 "5... <a href="/php/php-laravel-install.html">Read more</a>
-    <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> 26 Jan 2020 - <i class="fa fa-clock-o" aria-hidden="true"></i> 
-  
-  
-    1 minute read
   
 
 

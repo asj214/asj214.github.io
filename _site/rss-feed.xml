@@ -22,6 +22,23 @@
 			</item>
 		
 			<item>
+				<title>라라벨(laravel) 7.x 데이터 베이스 쿼리 로그</title>
+				
+					<dc:creator>sjahn</dc:creator>
+				
+				
+					<description>&lt;p&gt;라라벨을 사용하면서 데이터베이스 쿼리로그가 궁금할때가 있다.&lt;br /&gt;
+대부분의 프레임워크에서는 기본으로 제공하는 기능들 같지만 라라벨은 아니였다.&lt;br /&gt;
+그래서 별로로 추가 시켜주어야한다.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Thu, 06 Feb 2020 00:00:00 +0900</pubDate>
+				<link>http://localhost:4000/php/php-laravel-query-log.html</link>
+				<guid isPermaLink="true">http://localhost:4000/php/php-laravel-query-log.html</guid>
+			</item>
+		
+			<item>
 				<title>라라벨(laravel) 7.x 댓글 기능 추가</title>
 				
 					<dc:creator>sjahn</dc:creator>
