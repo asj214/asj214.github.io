@@ -106,21 +106,24 @@
   </h1>
   
   <p>
-    artisan make:migration create_likes_table --create=likes
+    Post에 Attachment, Comment 이제는 좋아요 기능을 추가할 차례이다.
+좋아요 기능을 작업하면서 내가 좋아요한 대상을 심플하게 구현하고 싶어서 많은 고민을 하였는데, 
+아직 완벽한 해결방법을 찾지 못하고 있다.
+추후에 공부를 계속하면서 발견되면 이 포스트를 수정할 예정이다.
+
+좋아요 마이그레이션 파일 생성
+artisan make:migration create_likes_table --create=likes
+
+마이그레이션 파일 작성
 
 public function up()
 {
     Schema::create('likes', function (Blueprint $table) {
-        $table-&gt;id();
-        $table-&gt;integer('user_id');
-        $table-&gt;string('like_type');
-        $table-&gt;integer('like_id');
-        $table-&gt;timestamps();
-        $table-&gt;index(['like_... <a href="/php/php-laravel-like.html">Read more</a>
+        $table... <a href="/php/php-laravel-like.html">Read more</a>
     <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> 08 Feb 2020 - <i class="fa fa-clock-o" aria-hidden="true"></i> 
   
   
-    less than 1 minute read
+    2 minute read
   
 
 
