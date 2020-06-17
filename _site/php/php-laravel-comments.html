@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      라라벨(laravel) 7.x 댓글 기능 추가 | 주피라이터
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="주피라이터" />
+  <!-- Use RSS-2.0 -->
+  <!--<link href="https://asj214.github.io/rss-feed.xml" type="application/rss+xml" rel="alternate" title="주피라이터 | 기록되지 않는 것은 기억되지 않는다."/>
+  //-->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      });
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-168354300-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <!-- Use Jekyll SEO plugin -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>라라벨(laravel) 7.x 댓글 기능 추가 | 주피라이터</title>
+<meta name="generator" content="Jekyll v3.6.2" />
+<meta property="og:title" content="라라벨(laravel) 7.x 댓글 기능 추가" />
+<meta name="author" content="sjahn" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="comments 마이그레이션 파일 생성" />
+<meta property="og:description" content="comments 마이그레이션 파일 생성" />
+<link rel="canonical" href="http://localhost:4000/php/php-laravel-comments.html" />
+<meta property="og:url" content="http://localhost:4000/php/php-laravel-comments.html" />
+<meta property="og:site_name" content="주피라이터" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-05T00:00:00+09:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"sjahn"},"url":"http://localhost:4000/php/php-laravel-comments.html","headline":"라라벨(laravel) 7.x 댓글 기능 추가","dateModified":"2020-02-05T00:00:00+09:00","datePublished":"2020-02-05T00:00:00+09:00","description":"comments 마이그레이션 파일 생성","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/php/php-laravel-comments.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <script data-ad-client="ca-pub-1094854820920281" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">주피라이터</a>
+    <!-- <small class="masthead-subtitle">기록되지 않는 것은 기억되지 않는다.</small> -->
+    <div class="menu">
+  <nav class="menu-content">
+    
+      <a href="/menu/about.html">About</a>
+    
+      <a href="/menu/writing.html">Writing</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+  
+  
+    <a href="https://asj214.github.io" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  </nav>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container">
+      <h1>
+  라라벨(laravel) 7.x 댓글 기능 추가
+</h1>
+
+
+
+<p>comments 마이그레이션 파일 생성</p>
+
+<p><code class="highlighter-rouge">artisan make:migration create_comments_table --create=comments</code></p>
+
+<p>마이그레이션 코드 작성</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">'comments'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">();</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">integer</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s1">'commentable_type'</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">integer</span><span class="p">(</span><span class="s1">'commentable_id'</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">(</span><span class="s1">'body'</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">timestamps</span><span class="p">();</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">softDeletes</span><span class="p">();</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">index</span><span class="p">([</span><span class="s1">'deleted_at'</span><span class="p">,</span> <span class="s1">'commentable_type'</span><span class="p">,</span> <span class="s1">'commentable_id'</span><span class="p">]);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>마이그레이션<br />
+<code class="highlighter-rouge">artisan migrate</code></p>
+
+<p>모델 생성<br />
+<code class="highlighter-rouge">artisan make:model Comment</code></p>
+
+<p>모델 작성</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nx">App</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\SoftDeletes</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Comment</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="c1">//
+</span>    <span class="k">use</span> <span class="nx">SoftDeletes</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s2">"comments"</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'deleted_at'</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Post</code> 모델에 <code class="highlighter-rouge">Comment</code> 관계 설정</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">Model</span> <span class="p">{</span>
+    <span class="c1">//
+</span>    <span class="k">use</span> <span class="nx">SoftDeletes</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s2">"posts"</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'deleted_at'</span><span class="p">];</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">attachment</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="s1">'App\Attachment'</span><span class="p">,</span> <span class="s1">'attachment_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">'attachment_type'</span><span class="p">,</span> <span class="s1">'posts'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">comments</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">'App\Comment'</span><span class="p">,</span> <span class="s1">'commentable_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">'commentable_type'</span><span class="p">,</span> <span class="s1">'posts'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Post</code>와 <code class="highlighter-rouge">Comment</code>는 1:N의 관계로 설정하므로 <code class="highlighter-rouge">hasMany</code>의 관계로 정하였다.</p>
+
+<p><code class="highlighter-rouge">routes.php</code>에 코멘트 라우트 추가</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">'posts/{post}/comments'</span><span class="p">,</span> <span class="s1">'PostController@comments'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">'posts.comments'</span><span class="p">);</span>
+<span class="nx">Route</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">'posts/{id}/comments'</span><span class="p">,</span> <span class="s1">'PostController@comment_destroy'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">'posts.comment_destroy'</span><span class="p">);</span>
+<span class="nx">Route</span><span class="o">::</span><span class="na">resource</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">,</span> <span class="s1">'PostController'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이전에 <code class="highlighter-rouge">posts</code> 라우트를 추가한 곳의 위에다 추가해야한다.</p>
+
+<p>라우트 추가 확인<br />
+<code class="highlighter-rouge">artisan route:list --name=posts</code></p>
+
+<p><code class="highlighter-rouge">show.blade.php</code> 에 <code class="highlighter-rouge">comment</code> form 추가</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">action=</span><span class="s">"{{ route('posts.comments', ['post' =&gt; $post-&gt;id]) }}"</span><span class="nt">&gt;</span>
+        @csrf
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"body"</span><span class="nt">&gt;</span>댓글<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">"body"</span> <span class="na">id=</span><span class="s">"body"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">aria-label=</span><span class="s">"With textarea"</span> <span class="na">required</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-block btn-light btn-outline-secondary"</span> <span class="na">value=</span><span class="s">"작성"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Post</code> 모델에 <code class="highlighter-rouge">comment_count</code> 컬럼 추가</p>
+
+<p><code class="highlighter-rouge">artisan make:migration add_column_post_table --table=posts</code></p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">Schema</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//
+</span>        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">integer</span><span class="p">(</span><span class="s1">'comment_count'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">default</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">after</span><span class="p">(</span><span class="s1">'body'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">down</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">Schema</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//
+</span>        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">dropColumn</span><span class="p">(</span><span class="s1">'comment_count'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">artisan migrate</code></p>
+
+<p><code class="highlighter-rouge">PostController.php</code> 에 <code class="highlighter-rouge">comments</code> 기능 추가</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">comments</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$id</span><span class="p">){</span>
+
+    <span class="nv">$comment</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Comment</span><span class="p">;</span>
+    <span class="nv">$comment</span><span class="o">-&gt;</span><span class="na">user_id</span> <span class="o">=</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">id</span><span class="p">();</span>
+    <span class="nv">$comment</span><span class="o">-&gt;</span><span class="na">commentable_id</span> <span class="o">=</span> <span class="nv">$id</span><span class="p">;</span>
+    <span class="nv">$comment</span><span class="o">-&gt;</span><span class="na">commentable_type</span> <span class="o">=</span> <span class="s1">'posts'</span><span class="p">;</span>
+    <span class="nv">$comment</span><span class="o">-&gt;</span><span class="na">body</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
+    <span class="nv">$comment</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+    <span class="nv">$post</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+    <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">comment_count</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">comment_count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">'posts.show'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'post'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">comment</code> 작성 후 <code class="highlighter-rouge">post</code>에 <code class="highlighter-rouge">comment_count</code> 를 증가시키는 기능을 추가하였다.</p>
+
+<p><code class="highlighter-rouge">PostController.php</code> 에 <code class="highlighter-rouge">comment_destroy</code> 기능 추가</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">comment_destroy</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$id</span><span class="p">){</span>
+
+    <span class="nv">$comment</span> <span class="o">=</span> <span class="nx">Comment</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+    <span class="nv">$post</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$comment</span><span class="o">-&gt;</span><span class="na">commentable_id</span><span class="p">);</span>
+    <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">comment_count</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">comment_count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+    <span class="nv">$comment</span><span class="o">-&gt;</span><span class="na">destroy</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">'posts.show'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'post'</span> <span class="o">=&gt;</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">]);</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+<span class="post-date">
+  Written on
+  
+  February
+  5th,
+  2020
+  by
+  
+    sjahn
+  
+</span>
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=라라벨(laravel) 7.x 댓글 기능 추가&amp;url=https://asj214.github.io/php/php-laravel-comments.html" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://asj214.github.io/php/php-laravel-comments.html&amp;title=라라벨(laravel) 7.x 댓글 기능 추가" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/php/php-laravel-attachment.html">
+                라라벨(laravel) 7.x 첨부파일 기능 추가
+                <small>February 2, 2020</small>
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/php/php-laravel-post.html">
+                라라벨(laravel) 7.x 시작하기 (3)
+                <small>January 29, 2020</small>
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+
+  <section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = "sjahn";
+    var disqus_identifier = "/php/php-laravel-comments.html";
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+    </div>
+
+    <footer class="footer">
+  
+  
+  
+    <a href="https://asj214.github.io" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  <div class="post-date"><a href="/menu/about.html">주피라이터 | 기록되지 않는 것은 기억되지 않는다. by sjahn</a></div>
+</footer>
+  </div>
+</body>
+</html>
