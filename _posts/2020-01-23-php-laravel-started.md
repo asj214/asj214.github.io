@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "라라벨(laravel) 7.x 시작하기 (1)"
+title: "라라벨(laravel) 7.x 홈스티드를 이용한 개발환경 구축하기"
 author: "sjahn"
 categories: php
 tags: [php, laravel]

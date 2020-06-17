@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "라라벨(laravel) 7.x 시작하기 (2)"
+title: "라라벨(laravel) 7.x 설치하기"
 author: "sjahn"
 categories: php
 tags: [php, laravel]
