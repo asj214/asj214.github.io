@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      라라벨(laravel) 7.x 첨부파일 기능 추가 | 주피라이터
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="주피라이터" />
+  <!-- Use RSS-2.0 -->
+  <!--<link href="https://asj214.github.io/rss-feed.xml" type="application/rss+xml" rel="alternate" title="주피라이터 | 기록되지 않는 것은 기억되지 않는다."/>
+  //-->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      });
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-168354300-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <!-- Use Jekyll SEO plugin -->
+  <!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>라라벨(laravel) 7.x 첨부파일 기능 추가 | 주피라이터</title>
+<meta name="generator" content="Jekyll v3.6.2" />
+<meta property="og:title" content="라라벨(laravel) 7.x 첨부파일 기능 추가" />
+<meta name="author" content="sjahn" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="이전글에서 작업한 Post에 첨부파일 업로드 기능을 추가하는 것을 기록한다. 해당 attachments 테이블은 추후에 예정된 어드민 배너관리자에서도 쓰이게할 예정이고, 첨부파일을 이용하는 모든 기능에서 쓰일 예정이라 범용성이 있도록 설계를 하였다." />
+<meta property="og:description" content="이전글에서 작업한 Post에 첨부파일 업로드 기능을 추가하는 것을 기록한다. 해당 attachments 테이블은 추후에 예정된 어드민 배너관리자에서도 쓰이게할 예정이고, 첨부파일을 이용하는 모든 기능에서 쓰일 예정이라 범용성이 있도록 설계를 하였다." />
+<link rel="canonical" href="http://localhost:4000/php/php-laravel-attachment.html" />
+<meta property="og:url" content="http://localhost:4000/php/php-laravel-attachment.html" />
+<meta property="og:site_name" content="주피라이터" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-02T00:00:00+09:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"sjahn"},"url":"http://localhost:4000/php/php-laravel-attachment.html","headline":"라라벨(laravel) 7.x 첨부파일 기능 추가","dateModified":"2020-02-02T00:00:00+09:00","datePublished":"2020-02-02T00:00:00+09:00","description":"이전글에서 작업한 Post에 첨부파일 업로드 기능을 추가하는 것을 기록한다. 해당 attachments 테이블은 추후에 예정된 어드민 배너관리자에서도 쓰이게할 예정이고, 첨부파일을 이용하는 모든 기능에서 쓰일 예정이라 범용성이 있도록 설계를 하였다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/php/php-laravel-attachment.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <script data-ad-client="ca-pub-1094854820920281" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">주피라이터</a>
+    <!-- <small class="masthead-subtitle">기록되지 않는 것은 기억되지 않는다.</small> -->
+    <div class="menu">
+  <nav class="menu-content">
+    
+      <a href="/menu/about.html">About</a>
+    
+      <a href="/menu/writing.html">Writing</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+  
+  
+    <a href="https://asj214.github.io" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  </nav>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container">
+      <h1>
+  라라벨(laravel) 7.x 첨부파일 기능 추가
+</h1>
+
+
+
+<p><br />
+<a href="/php/php-laravel-post.html">이전글</a>에서 작업한 Post에 첨부파일 업로드 기능을 추가하는 것을 기록한다.<br />
+해당 <code class="highlighter-rouge">attachments</code> 테이블은 추후에 예정된 어드민 배너관리자에서도 쓰이게할 예정이고, 첨부파일을 이용하는 모든 기능에서 쓰일 예정이라
+범용성이 있도록 설계를 하였다.
+<br /></p>
+
+<h4 id="첨부파일-테이블-생성">첨부파일 테이블 생성</h4>
+
+<p><code class="highlighter-rouge">artisan make:migration create_attachments_table --create=attachments</code></p>
+
+<p>마이그레이션 코드 작성</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">'attachments'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">();</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">integer</span><span class="p">(</span><span class="s1">'user_id'</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s1">'attachment_type'</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">integer</span><span class="p">(</span><span class="s1">'attachment_id'</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s1">'url'</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">timestamps</span><span class="p">();</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">softDeletes</span><span class="p">();</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">index</span><span class="p">([</span><span class="s1">'deleted_at'</span><span class="p">,</span> <span class="s1">'attachment_type'</span><span class="p">,</span> <span class="s1">'attachment_id'</span><span class="p">]);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>마이그레이션<br />
+<code class="highlighter-rouge">artisan migrate</code></p>
+
+<p>모델 생성<br />
+<code class="highlighter-rouge">artisan make:model Attachment</code></p>
+
+<p>모델 작성</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nx">App</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\SoftDeletes</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Attachment</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="c1">//
+</span>    <span class="k">use</span> <span class="nx">SoftDeletes</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s2">"attachments"</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'deleted_at'</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">PostController.php</code> 에 모델 연결</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Auth</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Post</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Attachment</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>스토리지 링크 연결</p>
+
+<p><code class="highlighter-rouge">artisan storage:link</code></p>
+
+<blockquote>
+  <p>윈도우 환경에서는 cmd를 관리자 권한으로 실행시킨 후 vagrant에 접속하여야 된다.</p>
+</blockquote>
+
+<p><code class="highlighter-rouge">post@store</code>, <code class="highlighter-rouge">post@update</code> 에 첨부 파일 코드 추가</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">){</span>
+    <span class="c1">//
+</span>    <span class="nv">$validatedData</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">([</span>
+        <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'required|max:255'</span><span class="p">,</span>
+        <span class="s1">'body'</span> <span class="o">=&gt;</span> <span class="s1">'required'</span><span class="p">,</span>
+        <span class="s1">'thumbnail'</span> <span class="o">=&gt;</span> <span class="s1">'image|mimes:jpeg,png,jpg,gif,svg|max:2048'</span>
+    <span class="p">]);</span>
+
+    <span class="nv">$post</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Post</span><span class="p">();</span>
+    <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+    <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">body</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
+    <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">user_id</span> <span class="o">=</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">id</span><span class="p">();</span>
+    <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">hasFile</span><span class="p">(</span><span class="s1">'thumbnail'</span><span class="p">)){</span>
+        <span class="nv">$path</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">(</span><span class="s1">'thumbnail'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">store</span><span class="p">(</span><span class="s1">'public/upfiles/board'</span><span class="p">);</span>
+
+        <span class="nv">$attachment</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Attachment</span><span class="p">;</span>
+        <span class="nv">$attachment</span><span class="o">-&gt;</span><span class="na">user_id</span> <span class="o">=</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">id</span><span class="p">();</span>
+        <span class="nv">$attachment</span><span class="o">-&gt;</span><span class="na">attachment_id</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+        <span class="nv">$attachment</span><span class="o">-&gt;</span><span class="na">attachment_type</span> <span class="o">=</span> <span class="s1">'posts'</span><span class="p">;</span>
+        <span class="nv">$attachment</span><span class="o">-&gt;</span><span class="na">url</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s2">"public"</span><span class="p">,</span> <span class="s2">"storage"</span><span class="p">,</span> <span class="nv">$path</span><span class="p">);</span>
+        <span class="nv">$attachment</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">'posts.show'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'post'</span> <span class="o">=&gt;</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">]);</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Post</code> 모델과 <code class="highlighter-rouge">Attachment</code> 모델 관계 설정</p>
+
+<p><code class="highlighter-rouge">Post</code>와 <code class="highlighter-rouge">Attachment</code>의 관계를 1:N 으로 할지 1:1로 할지가 고민이 되었지만…<br />
+현재 폼에서는 1개의 사진만 등록/수정을 할수 있게 되어있으므로 1:1로 정함<br />
+<br /></p>
+
+<p><code class="highlighter-rouge">Post</code> 모델에 attachment 관계 설정</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">Model</span> <span class="p">{</span>
+    <span class="c1">//
+</span>    <span class="k">use</span> <span class="nx">SoftDeletes</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s2">"posts"</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'deleted_at'</span><span class="p">];</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">attachment</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasOne</span><span class="p">(</span><span class="s1">'App\Attachment'</span><span class="p">,</span> <span class="s1">'attachment_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">'attachment_type'</span><span class="p">,</span> <span class="s1">'posts'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">post@index</code>, <code class="highlighter-rouge">post@show</code> 에 <code class="highlighter-rouge">attachment</code> 불러오기</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
+    <span class="c1">//
+</span>    <span class="nv">$post</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">::</span><span class="na">with</span><span class="p">([</span><span class="s1">'attachment'</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$post</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">());</span>
+    <span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">'posts.show'</span><span class="p">,</span> <span class="nb">compact</span><span class="p">(</span><span class="s1">'post'</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Post</code> 모델에 <code class="highlighter-rouge">with</code> 라는 함수를 이용하여 불러왔다.<br />
+이 밖에도 공식 문서를 보면 다른 방식으로도 불러올수 있지만… 난 이상하게 저렇게 불러오는 것을 선호한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Array
+(
+    [id] =&gt; 2
+    [user_id] =&gt; 1
+    [title] =&gt; hello world
+    [body] =&gt; 사진 업로드
+    [created_at] =&gt; 2020-06-17T11:54:14.000000Z
+    [updated_at] =&gt; 2020-06-17T11:54:14.000000Z
+    [deleted_at] =&gt; 
+    [attachment] =&gt; Array
+        (
+            [id] =&gt; 1
+            [user_id] =&gt; 1
+            [attachment_type] =&gt; posts
+            [attachment_id] =&gt; 2
+            [url] =&gt; storage/upfiles/board/qdnS3HldrP2ikxzGRUeD51WiCnhKXF57kMFmUE1T.jpeg
+            [created_at] =&gt; 2020-06-17T11:54:14.000000Z
+            [updated_at] =&gt; 2020-06-17T11:54:14.000000Z
+            [deleted_at] =&gt; 
+        )
+
+)
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">toArray</code>를 이용하여 데이터를 배열로 바꿔서 데이터를 확인해보면 위와 같이 나온다.</p>
+
+
+<span class="post-date">
+  Written on
+  
+  February
+  2nd
+    ,
+  2020
+  by
+  
+    sjahn
+  
+</span>
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=라라벨(laravel) 7.x 첨부파일 기능 추가&amp;url=https://asj214.github.io/php/php-laravel-attachment.html" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://asj214.github.io/php/php-laravel-attachment.html&amp;title=라라벨(laravel) 7.x 첨부파일 기능 추가" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/php/php-laravel-post.html">
+                라라벨(laravel) 7.x 시작하기 (3)
+                <small>January 29, 2020</small>
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/php/php-laravel-install.html">
+                라라벨(laravel) 7.x 시작하기 (2)
+                <small>January 26, 2020</small>
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+
+  <section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = "sjahn";
+    var disqus_identifier = "/php/php-laravel-attachment.html";
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+    </div>
+
+    <footer class="footer">
+  
+  
+  
+    <a href="https://asj214.github.io" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  <div class="post-date"><a href="/menu/about.html">주피라이터 | 기록되지 않는 것은 기억되지 않는다. by sjahn</a></div>
+</footer>
+  </div>
+</body>
+</html>
