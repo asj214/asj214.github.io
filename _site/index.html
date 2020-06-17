@@ -102,6 +102,35 @@
       
 <div class="posts">
   <h1>
+    <a href="/php/php-laravel-like.html">라라벨(laravel) 7.x 좋아요 기능 추가</a>
+  </h1>
+  
+  <p>
+    artisan make:migration create_likes_table --create=likes
+
+public function up()
+{
+    Schema::create('likes', function (Blueprint $table) {
+        $table-&gt;id();
+        $table-&gt;integer('user_id');
+        $table-&gt;string('like_type');
+        $table-&gt;integer('like_id');
+        $table-&gt;timestamps();
+        $table-&gt;index(['like_... <a href="/php/php-laravel-like.html">Read more</a>
+    <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> 08 Feb 2020 - <i class="fa fa-clock-o" aria-hidden="true"></i> 
+  
+  
+    less than 1 minute read
+  
+
+
+
+</span>
+  </p>
+</div>
+
+<div class="posts">
+  <h1>
     <a href="/php/php-laravel-comments.html">라라벨(laravel) 7.x 댓글 기능 추가</a>
   </h1>
   
@@ -166,7 +195,7 @@ public function up()
 
 <div class="posts">
   <h1>
-    <a href="/php/php-laravel-post.html">라라벨(laravel) 7.x 시작하기 (3)</a>
+    <a href="/php/php-laravel-post.html">라라벨(laravel) 7.x 게시판 만들기</a>
   </h1>
   
   <p>
@@ -222,42 +251,6 @@ composer create-project --prefer-dist laravel/laravel sjahn.homestead.test
 # 특정 버전 설치
 composer create-project --prefer-dist laravel/laravel 프로젝트명 "5... <a href="/php/php-laravel-install.html">Read more</a>
     <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> 26 Jan 2020 - <i class="fa fa-clock-o" aria-hidden="true"></i> 
-  
-  
-    1 minute read
-  
-
-
-
-</span>
-  </p>
-</div>
-
-<div class="posts">
-  <h1>
-    <a href="/php/php-laravel-started.html">라라벨(laravel) 7.x 시작하기 (1)</a>
-  </h1>
-  
-  <p>
-    일전에 5.8 버전으로 작업을 해본 경험이 있었는데, 어느새 6.x를 지나고 7.x까지 온 듯하다.
-
-최근에 개발 언어를 python으로 변경하면서 php쪽은 살짝 소외되었었는데, 공부용으로라도 기록해야할듯하여 처음부터 다시 진행해본다.
-
-나는 Windows, Mac 두가지를 둘다 사용하므로 최대한 환경의 영향이 없는 homestead를 다시 이용하기로 했다.
-
-준비물
-
-  VirtualBox or VMWare
-  Vagrant
-  git
-
-
-설치 시 도움이 많이 되었던 페이지
-
-  라라벨 코리아 / 홈스테드
-  라라벨 vagrant 설치, 설정 등 좀 더 자세한 설명 페이지
-  가상호스트 추가 시 도움 될 페이지... <a href="/php/php-laravel-started.html">Read more</a>
-    <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> 23 Jan 2020 - <i class="fa fa-clock-o" aria-hidden="true"></i> 
   
   
     1 minute read
