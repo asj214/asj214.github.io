@@ -196,6 +196,7 @@ GEM
       gemoji (~> 3.0)
       html-pipeline (~> 2.2)
       jekyll (>= 3.0, < 5.0)
+    json (2.3.1)
     kramdown (2.3.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -258,7 +259,13 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  jekyll
+  jekyll-feed
+  jekyll-gist
   jekyll-include-cache
+  jekyll-paginate
+  jekyll-sitemap
+  json
 
 BUNDLED WITH
    1.17.2
